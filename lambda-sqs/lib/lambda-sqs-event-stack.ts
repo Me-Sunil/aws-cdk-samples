@@ -36,9 +36,9 @@ export class LambdaSqsEventStack extends cdk.Stack {
 
     // Adding SQS as EventSource to Lambda
     lambdaFunction.addEventSource(new SqsEventSource(eventQueue, {
-      batchSize: 1,
+      batchSize: 10,
       enabled: true,
-      maxConcurrency: 5,
+      maxConcurrency: 10,
     }));
   }
 
@@ -59,7 +59,7 @@ export class LambdaSqsEventStack extends cdk.Stack {
       environment: {
         NODE_OPTIONS: '--enable-source-maps',
       },
-      handler: 'operation.handler',
+      handler: 'index.handler',
       logRetention: logs.RetentionDays.ONE_DAY,
       memorySize: 512,
       runtime: lambda.Runtime.NODEJS_18_X,
@@ -76,7 +76,8 @@ export class LambdaSqsEventStack extends cdk.Stack {
    */
   createEventQueue(): cdk.aws_sqs.IQueue {
     return new cdk.aws_sqs.Queue(this, 'LambdaSqsEventQueue', {
-      visibilityTimeout: cdk.Duration.seconds(300)
+      visibilityTimeout: cdk.Duration.seconds(300),
+      encryption : cdk.aws_sqs.QueueEncryption.KMS_MANAGED
     });
   }
 

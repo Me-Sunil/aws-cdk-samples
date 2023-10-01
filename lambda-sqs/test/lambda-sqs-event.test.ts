@@ -11,7 +11,7 @@ test('Lambda Queue Created', () => {
         Runtime: "nodejs18.x",
         TracingConfig: { "Mode": "Active" },
         Timeout: 120,
-        Handler: "operation.handler",
+        Handler: "index.handler",
     });
 
     template.hasResourceProperties('AWS::SQS::Queue', {
