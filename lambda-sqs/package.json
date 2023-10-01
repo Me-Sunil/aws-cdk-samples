@@ -4,6 +4,11 @@
   "bin": {
     "lambda-sqs-event": "bin/lambda-sqs-event.js"
   },
+  "author": {
+    "name": "Yadav, Sunil",
+    "email": "sunil016@yahoo.com",
+    "url": "http://me-sunil.github.io/"
+  },
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",

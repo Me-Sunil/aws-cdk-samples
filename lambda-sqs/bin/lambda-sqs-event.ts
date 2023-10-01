@@ -7,8 +7,5 @@ new LambdaSqsEventStack(app, 'LambdaSqsEventStack', {
   env: { 
     account: process.env.CDK_DEFAULT_ACCOUNT, 
     region: process.env.CDK_DEFAULT_REGION 
-  },
-  tags : {
-    'Name' : 'Sample-CDK-Application',
   }
 });
